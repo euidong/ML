@@ -25,15 +25,18 @@ class Data(torch.utils.data.Dataset):
     def __len__(self):
         return self.len
 
-class LinearRegression(nn.Module):
-  """Some Information about LinearRegression"""
-  def __init__(self, input_size, output_size):
-    super(LinearRegression, self).__init__()
-    self.linear = nn.Linear(input_size, output_size)
 
-  def forward(self, x):
-    yhat = self.linear(x)
-    return yhat
+class LinearRegression(nn.Module):
+    """Some Information about LinearRegression"""
+
+    def __init__(self, input_size, output_size):
+        super(LinearRegression, self).__init__()
+        self.linear = nn.Linear(input_size, output_size)
+
+    def forward(self, x):
+        yhat = self.linear(x)
+        return yhat
+
 
 model = LinearRegression(2, 2)
 
@@ -48,12 +51,12 @@ LOSS = []
 epochs = 100
 
 for epoch in range(epochs):
-  for x, y in dataloader:
-    yhat = model(x)
-    loss = criterion(yhat, y)
-    LOSS.append(loss.item())
-    optimizer.zero_grad()
-    loss.backward()
-    optimizer.step()
+    for x, y in dataloader:
+        yhat = model(x)
+        loss = criterion(yhat, y)
+        LOSS.append(loss.item())
+        optimizer.zero_grad()
+        loss.backward()
+        optimizer.step()
 
 print(LOSS)
