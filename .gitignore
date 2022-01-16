@@ -1,4 +1,6 @@
-*.csv
+data/**
+!data/generator/*
+!data/README.md
 
 .vscode
 
